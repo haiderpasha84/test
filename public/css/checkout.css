@@ -243,7 +243,7 @@ ol, ul {
     border-color: #999;
 }
 .panel-info > .panel-heading {
-    background-image: linear-gradient(to bottom, #555 0px, #888 100%);
+    background-image: linear-gradient(to bottom, #343A40 0px, #343A40 100%);
 }
 
 hr {

@@ -15,6 +15,10 @@ class CheckoutController extends Controller
     {
         //
         return view('checkout');
+
+        if(auth()->user() && request()->is('guestCheckout')){
+            return redirect()->route('checkout.index');
+        }
     }
 
     /**

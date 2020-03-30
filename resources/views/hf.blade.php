@@ -76,7 +76,8 @@ Premium Cricket Gear Shipped Worldwide!</h7>
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto" >
+        <div class="navbar-collapse" style="margin-right:150px;">
           <li class="nav-item active">
             <a class="nav-link" href="{{ url('landingpage') }}" style="font-size:16px">Home
               <span class="sr-only">(current)</span>
@@ -91,18 +92,40 @@ Premium Cricket Gear Shipped Worldwide!</h7>
           <li class="nav-item">
             <a class="nav-link" href="{{url('contact')}}" style="font-size:16px">Contact</a>
           </li>
+          </div>
+          @guest
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('register')}}" style="font-size:16px">Sign up</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" href="{{route('login')}}" style="font-size:16px">Login</a>
+          </li> 
+          @else
+                                      <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" style="color:white;" class="nav-link">
+                                            Logout
+                                        </a>
+                                      </li>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+          @endguest
         </ul>
       </div>
-    </div>
-    <form class="form-inline my-2 " style="margin-left:400px">
+      <form class="form-inline my-2 " >
               
-                <a class="btn btn-sm ml-3" id="button-s" href="{{ route('cart.index') }}">
-                    <i class="fa fa-shopping-cart" style="margin-right:2px;color:white;"></i>Cart
-                    @if (Cart::instance('default')->count() > 0)
-                    <span class="badge badge-light">{{Cart::instance('default')->count()}}</span>
-                    @endif
-                </a>
-            </form>
+              <a class="btn btn-sm ml-3" id="button-s" href="{{ route('cart.index') }}">
+                  <i class="fa fa-shopping-cart" style="margin-right:2px;color:white;"></i>Cart
+                  @if (Cart::instance('default')->count() > 0)
+                  <span class="badge badge-light">{{Cart::instance('default')->count()}}</span>
+                  @endif
+              </a>
+          </form>
+    </div>
+
   </nav>
 
 <!-- nav 2 -->
@@ -181,6 +204,8 @@ Premium Cricket Gear Shipped Worldwide!</h7>
 @yield('cart')
 @yield('checkout')
 @yield('extra-js')
+
+@yield('content')
 
 
 

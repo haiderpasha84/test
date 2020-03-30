@@ -29,9 +29,10 @@ route::delete('/saveForLater/{product}', 'SaveForLaterController@destroy')->name
 route::post('/saveForLater/switchToCart/{product}', 'SaveForLaterController@switchToCart')->name('saveForLater.switchToCart');
 
 
-Route::get('/checkout' ,'CheckoutController@index')->name('checkout.index');
+Route::get('/checkout' ,'CheckoutController@index')->name('checkout.index')->middleware('auth');
 
-
+// guest checkout
+Route::get('/guestCheckout' ,'CheckoutController@index')->name('guestCheckout.index');
 
 
 Route::get('empty',function(){
@@ -53,3 +54,7 @@ Route::get('/about', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

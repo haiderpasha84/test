@@ -7,7 +7,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 
-<div class="container wrapper">
+<div class="container" style="margin-left:600px;">
             <div class="row cart-head">
                 <div class="container">
                 <div class="row">
@@ -20,18 +20,18 @@
                         <span class="step_thankyou check-bc step_complete">Thank you</span>
                     </div>
                 </div> -->
-                <div class="row" style="margin-top:30px">
+                <div class="row" style="margin-top:30px;">
                     <p></p>
                 </div>
                 </div>
             </div>    
             <div class="row cart-body">
-                <form class="form-horizontal" method="post" action="">
+                <form class="form-horizontal" method="post" action="" >
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     <!--REVIEW ORDER-->
-                    <div class="panel panel-info">
+                    <div class="panel panel-info"style="margin-left:250px;">
                         <div class="panel-heading">
-                            Your Order <div class="pull-right"><small><a class="afix-1" href="#">Edit Cart</a></small></div>
+                            Your Order <div class="pull-right"><small><a class="afix-1" href="{{route('cart.index')}}">Edit Cart</a></small></div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -111,6 +111,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <div class="col-md-12"><strong>Email Address:</strong></div>
+                                @if (auth()->user())
+                                <div class="col-md-12"><input type="text" name="email" class="form-control" value="{{auth()->user()->email}}"  readonly/></div>
+                                @else
+                                <div class="col-md-12"><input type="text" name="email" class="form-control" value="{{ old('email') }}"  required/></div>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <div class="col-md-12"><strong>Country:</strong></div>
                                 <div class="col-md-12">
                                     <input type="text" class="form-control" name="country" value="" />
@@ -155,10 +163,7 @@
                                 <div class="col-md-12"><strong>Phone Number:</strong></div>
                                 <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>Email Address:</strong></div>
-                                <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
-                            </div>
+
                         </div>
                     </div>
                     <!--SHIPPING METHOD END-->
@@ -176,23 +181,44 @@
                                         <option value="8">Discover</option>
                                     </select>
                                 </div>
-                            </div> -->
-                            <!-- </form>
-                            <div class="form-group">
+                            </div>  -->
+                            <div class="form-group" style="margin-left:4px;margin-right:4px;">
                                 <label for="card-element">
                                     Credit or debit card
                                 </label>
                                 <div id="card-element">
-                                    <!-- a stripe element will be inserted here -->
+                                     a stripe element will be inserted here
                                 </div>
                                 <div id="card-errors" role="alert"></div>
                             </div>
                            
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"style="margin-left:4px;margin-right:4px;">
                                 <div class="col-md-12">
                                     <span>Pay secure using your credit card.</span>
-                                </div> -->
+                                </div>
+
+                                <div class="form-group"style="margin-left:4px;margin-right:4px;">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <button type="submit" class="btn btn-primary btn-submit-fix" >Place Order</button>
+                                </div>
+                            </div>
+</div>
+</div>
+</div>
+</div>
+
+                            </form>
+
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+                             
                                 <!-- <div class="col-md-12">
                                     <ul class="cards">
                                         <li class="visa hand">Visa</li>
@@ -200,8 +226,8 @@
                                         <li class="amex hand">Amex</li>
                                     </ul>
                                     <div class="clearfix"></div>
-                                </div> -->
-                            <!-- </div> -->
+                                </div>
+                            </div>
                             
                            
                             <div class="form-group">
@@ -211,15 +237,12 @@
                             </div>
                         </div>
                     </div>
-                    <!--CREDIT CART PAYMENT END-->
-                </div>
+                    CREDIT CART PAYMENT END-->
                 
                 
-            </div>
-            <div class="row cart-footer">
-        
-            </div>
-    </div>
+                
+
+
 
 
     @endsection
